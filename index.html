@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باقر بيرقدار</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            direction: rtl;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+        
+        .moon {
+            position: absolute;
+            top: 50px;
+            right: 100px;
+            width: 60px;
+            height: 60px;
+            background-color: #f0d4a0;
+            border-radius: 50%;
+            box-shadow: 0 0 20px 5px rgba(240, 212, 160, 0.5);
+            z-index: 1;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+        
+        .lantern {
+            position: absolute;
+            width: 30px;
+            height: 50px;
+            background-color: rgba(255, 150, 50, 0.8);
+            border-radius: 5px 5px 15px 15px;
+            box-shadow: 0 0 10px rgba(255, 150, 50, 0.5);
+            z-index: 1;
+            animation: float 3s infinite ease-in-out;
+        }
+        
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            width: 10px;
+            height: 10px;
+            background-color: #d4af37;
+            border-radius: 50%;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 
+                        0 5px 15px rgba(0, 0, 0, 0.05),
+                        inset 0 0 10px rgba(255, 215, 0, 0.2);
+            z-index: 2;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .container::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        h1 {
+            color: #45322E;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+        
+        .eid-image {
+            width: 100%;
+            height: 200px;
+            margin: 20px 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="0 0 500 200"><path d="M250 180 Q350 150 400 180 Q450 150 490 110 Q450 50 400 80 Q350 50 300 80 Q250 50 200 80 Q150 50 100 80 Q50 50 10 110 Q50 150 100 180 Q150 150 250 180Z" fill="%23d4af37" opacity="0.5"/><circle cx="250" cy="100" r="40" fill="%23fff" stroke="%23d4af37" stroke-width="2"/><text x="250" y="110" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="%2345322E">عيد مبارك</text></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            border-radius: 10px;
+        }
+        
+        .greeting {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #45322E;
+            margin: 20px 0;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #d4af37, #e6c656);
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(0.7);
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #45322E;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+        
+        .gift-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #45322E;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            direction: ltr;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #45322E, #6d5a55);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: bold;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(45deg, #6d5a55, #45322E);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #d4af37;
+            z-index: 50;
+            opacity: 0;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #388E3C;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1, .greeting, .btn {
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .greeting {
+            animation-delay: 0.2s;
+        }
+        
+        .btn {
+            animation-delay: 0.4s;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                width: 95%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .greeting {
+                font-size: 1rem;
+                padding: 8px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop id="myVideo">
+            <source src="saif.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    
+    <div class="moon"></div>
+    <div class="stars"></div>
+    
+    <div class="container">
+        <h1>عيد الفطر المبارك</h1>
+        <div class="eid-image"></div>
+        <div class="greeting">
+            تقبل الله منا ومنكم صالح الأعمال، وأعاد علينا رمضان بالايمان والبركات. 
+            اللهم اجعل أيامنا فرحًا وسعادة، واغفر لنا ولعائلاتنا.
+            عيدكم مبارك، وكل عام وأنتم أقرب إلى الله وأسمى قلوبًا.
+            <br>- باقر بيرقدار
+        </div>
+        <button class="btn" id="giftBtn">فرحني بعيدية</button>
+    </div>
+    
+    <div class="modal" id="giftModal">
+        <div class="modal-content">
+            <div class="modal-close" id="closeModal">×</div>
+            <h2>أرسل عيدية</h2>
+            <div class="gift-form">
+                <div class="form-group">
+                    <label for="phoneNumber">رقم زين كاش باقر</label>
+                    <input type="text" id="phoneNumber" value="07736061034" readonly onclick="this.select();" style="cursor: pointer;">
+                </div>
+                <div class="form-group">
+                    <label for="amount">المبلغ (الف دينار)</label>
+                    <input type="number" id="amount" min="1" max="100" value="5">
+                </div>
+                <button class="submit-btn" id="sendBtn">إرسال</button>
+            </div>
+            <div class="success-message" id="successMessage">
+                كل عام وانتوا بالف خير ❤️
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const starsContainer = document.querySelector('.stars');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            
+            starsContainer.appendChild(star);
+        }
+        
+        for (let i = 0; i < 5; i++) {
+            const lantern = document.createElement('div');
+            lantern.classList.add('lantern');
+            
+            lantern.style.left = `${Math.random() * 80 + 10}%`;
+            lantern.style.top = `${Math.random() * 50 + 10}%`;
+            
+            lantern.style.animationDelay = `${Math.random() * 2}s`;
+            
+            document.body.appendChild(lantern);
+        }
+        
+        const giftBtn = document.getElementById('giftBtn');
+        const modal = document.getElementById('giftModal');
+        const closeModal = document.getElementById('closeModal');
+        const sendBtn = document.getElementById('sendBtn');
+        const successMessage = document.getElementById('successMessage');
+        const phoneInput = document.getElementById('phoneNumber');
+        const amountInput = document.getElementById('amount');
+        
+        giftBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                successMessage.style.display = 'none';
+                phoneInput.value = '07736061034'; 
+                amountInput.value = '5';
+            }, 300);
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal.click();
+            }
+        });
+        
+        sendBtn.addEventListener('click', () => {
+            const phoneNumber = phoneInput.value.trim();
+            const amount = amountInput.value;
+            
+            
+            if (amount < 1 || amount > 100) {
+                alert('الرجاء إدخال مبلغ بين الف دينار و 100 الف');
+                return;
+            }
+            
+            createConfetti();
+            
+            successMessage.style.display = 'block';
+            
+            document.querySelector('.gift-form').style.display = 'none';
+            
+            setTimeout(() => {
+                closeModal.click();
+            }, 3000);
+        });
+        
+        function createConfetti() {
+            const colors = ['#d4af37', '#45322E', '#87CEEB', '#FFD700', '#fff'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = `${Math.random() * 100}%`;
+                
+                const size = Math.random() * 10 + 5;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                const shapes = ['', '50%'];
+                confetti.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)];
+                
+                modal.appendChild(confetti);
+                
+                const animationDuration = Math.random() * 2 + 1;
+                confetti.style.transition = `all ${animationDuration}s ease-out`;
+                
+                setTimeout(() => {
+                    confetti.style.opacity = '1';
+                    confetti.style.transform = `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 + 100}px) rotate(${Math.random() * 360}deg)`;
+                }, 10);
+                
+                setTimeout(() => {
+                    confetti.style.opacity = '0';
+                    setTimeout(() => {
+                        modal.removeChild(confetti);
+                    }, animationDuration * 1000);
+                }, animationDuration * 500);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('myVideo');
+            
+            video.onerror = function() {
+                console.error('خطأ في تحميل الفيديو');
+                document.body.style.backgroundColor = '#f8f0e3';
+                document.body.style.backgroundImage = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><path fill=\"%23f0d4a0\" d=\"M0 0h50v50H0zM50 50h50v50H50z\" opacity=\"0.2\"/></svg>')";
+            };
+        });
+    </script>
+</body>
+</html>
